@@ -134,8 +134,8 @@ class WizardUI(object):
         self.retranslate_ui(wizard)
         wizard.addPage(self.wizardpage1)
         wizard.addPage(self.wizardpage2)
-        wizard.addPage(self.wizardpage3)
-        wizard.addPage(self.wizardpage4)
+        wizard.addPage(self.wizardpage4) #show annotations task (4) after training (2)
+        wizard.addPage(self.wizardpage3) #ask about software (3) after annotation task
         wizard.addPage(self.wizardpage5)
 
     def retranslate_ui(self, wizard):
@@ -144,64 +144,51 @@ class WizardUI(object):
         self.wizardpage1.setTitle(_translate("Wizard", "Introduction"))
         self.wizardpage1.setSubTitle(_translate(
             "Wizard",
-            "Read the information below, click the check box if you "
-            "understand and consent to participate, and click \'Next\' "
-            "to begin."))
+            "Please read the information below, click the check box to consent and participate, and click \'Next\' to begin."))
         self.welcomelabel.setText(_translate(
             "Wizard",
             "<html><head/><body><p align=\"justify\"><span style=\" "
-            "font-weight:600;\">WARNING</span></p><p align=\"justify\">"
-            "DEBUG BUILD ONLY. SHOULD  NOT BE RUN BY END USER. Lorem ipsum "
-            "-- populate with consent form, contact information, research "
-            "ethics approval, etc. <span style=\" font-weight:600;\">"
-            "...text...</span><span style=\" font-weight:600; "
-            "font-style:italic;\">.</span> ...text... <span style=\" "
-            "font-style:italic;\">...text...</span>.</p></body></html>"))
+            #"font-weight:600;\">WARNING</span></p>
+            "<p align=\"justify\">"
+            #"DEBUG BUILD ONLY. SHOULD  NOT BE RUN BY END USER. Lorem ipsum "
+            #"-- populate with consent form, contact information, research "
+            #"ethics approval, etc. <span style=\" font-weight:600;\">"
+            #"...text...</span><span style=\" font-weight:600; "
+            #"font-style:italic;\">.</span> ...text... <span style=\" "
+            #"font-style:italic;\">...text...</span>."
+            "Welcome! Thank you for participating in our study, which aims to test a tool for anotating your collection such that it could be interpreted by someone else in the future, for example by a curator if you were to donate it to a museum, or by a family member if you were to pass on your collection. In what follows you will be trained in using the tool on a small demonstration collection, and then will annotate your own collection on this computer. Afterwards the researcher will ask you a few questions about your use and perceptions of the tool. You may ask them questions at any time."
+            "</p></body></html>"))
         self.consentbox.setText(_translate(
             "Wizard", "I understand and consent to participate: "))
         self.reblabel.setText(_translate(
             "Wizard",
-            "<html><head/><body><p align=\"justify\">This study is conducted "
-            "by <a href=\"mailto:jesse.dinneen@mail.mcgill.ca\"><span style=\" "
-            "text-decoration: underline; color:#2980b9;\">Jesse David "
-            "Dinneen</span></a>, a PhD candidate supervised by Prof. "
-            "<a href=\"mailto:charles.julien@mcgill.ca\"><span style=\" "
-            "text-decoration: underline; color:#2980b9;\">Charles-Antoine "
-            "Julien</span></a> in the School of Information Studies at McGill "
-            "University, and is approved by McGill University Research Ethics "
-            "Board (#75-0715, \'Understanding file management behavior\'). If "
-            "you have any questions or concerns regarding your rights or "
-            "welfare as a participant in this research study, please contact "
-            "the McGill Ethics Manager at 514-398-6831 or "
-            "<a href=\"mailto:lynda.mcneil@mcgill.ca\"><span style=\" "
-            "text-decoration: underline; color:#2980b9;\">"
-            "lynda.mcneil@mcgill.ca</span></a></p></body></html>"))
+            "<html><head/><body><p align=\"justify\">This software is provided as a part of the <a href=\"http://hiddenheritage.vuw.ac.nz\"><span style=\" "
+            "text-decoration: underline; color:#2980b9;\">Hidden Heritage</span></a> research project run by Drs Maja Krtalić and Jesse Dinneen, with Profs Chern Li Liew and Anne Goulding, at Victoria University of Wellington, and was approved by the university's Human Ethics Committee (HEC #27173). If you have any questions about your participation in this study, please contact <a href=\"mailto:jesse.dinneen@vuw.ac.nz\"><span style=\" "
+            "text-decoration: underline; color:#2980b9;\">Dr Dinneen</span></a>, and if you have any questions or concerns regarding your rights or welfare as a participant in this study, please contact the Human Ethics Committee</a> via <a href=\"mailto:hec@vuw.ac.nz\"><span style=\" "
+            "text-decoration: underline; color:#2980b9;\">email</span></a> or telephone (+64-4-463-6028).</p></body></html>"))
         self.consent_savebutton.setText(_translate(
             "Wizard", "Save this info to file (optional)"))
         # page 2 labels
-        self.wizardpage2.setTitle(_translate("Wizard", "Familiarization"))
+        self.wizardpage2.setTitle(_translate("Wizard", "Training"))
         self.wizardpage2.setSubTitle(_translate(
             "Wizard",
-            "a training page that shows some instructions (e.g., a label; "
-            "i'll provide text later) above a tree widget like in (3.) but "
-            "populated with just a few fake folders (e.g., named Folder 1-4) "
-            "so users can try out and learn the functionality"))
+            "This screen provides training on using the annotation tool. Please listen to the researcher's explanation of how to use the tool, try it for your self, and once you feel comfortable using it, press \'Next\' to continue."))
         self.reset_demo_btn.setText(_translate("Wizard", "Reset"))
         self.reset_demo_btn.setToolTip(_translate(
             "Wizard", "Return example folder structure to initial state."))
 
         # page 3 labels
-        self.wizardpage3.setTitle(_translate("Wizard", "Software"))
+        self.wizardpage3.setTitle(_translate("Wizard", "Listing uncommon software"))
         self.wizardpage3.setSubTitle(_translate(
             "Wizard",
-            "Names of any special software you use to access your files"))
+            "Please list any software needed to view your collection if someone outside your field or family is unlikely to know it, for example: \"LaTeX for <span style=\" "
+            "font-style:italic;\">.tex</span> files\". You can omit very common software like Microsoft Word."))
 
         # page 4 labels
-        self.wizardpage4.setTitle(_translate("Wizard", "Analysis"))
+        self.wizardpage4.setTitle(_translate("Wizard", "Annotate your collection"))
         self.wizardpage4.setSubTitle(_translate(
             "Wizard",
-            "(A) a small text label with some brief instructions I will "
-            "provide later"))
+            "Please indicate which parts of your collection are relevant (or should be excluded/ignored). Load your collection with \'Find folders\', and when finished annotating, \'Save\' your work and click \'Next\' to continue."))
         self.select_btn_1.setText(_translate("Wizard", "Find folders"))
         self.select_btn_1.setToolTip(_translate(
             "Wizard", "Select <b>personal folder</b> for data collection."))
@@ -219,8 +206,9 @@ class WizardUI(object):
         self.less_btn_1.setToolTip(_translate(
             "Wizard",
             "Collapses all folders except the root."))
+
         # page 5 labels
         self.wizardpage5.setTitle(_translate("Wizard", "Finished!"))
         self.wizardpage5.setSubTitle(_translate(
             "Wizard",
-            "Thank you for participating. Click \'Finish\' to exit."))
+            "Thank you -- please refer to the researcher for instructions on completing participation."))
